@@ -3,6 +3,7 @@
   <view class="userinfo">
     <image src='../../assets/Car-icon.png' class='home-logo' bindtap="bindViewTap"></image>
     <van-button type="primary" size="small" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信登录 </van-button>
+    <!-- <van-button bindtap='leanLogin'>LeanCloud Login</van-button> -->
     <!-- <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>

@@ -1,5 +1,6 @@
 //index.js
 const util = require('../../utils/util.js')
+const AV = require('../../libs/av-live-query-weapp-min');
 //获取应用实例
 const app = getApp()
 
@@ -52,14 +53,21 @@ Page({
         hasUserInfo: false
       })
     } else {
+      wx.showLoading({
+        title: '数据加载中',
+      });
       app.globalData.userInfo = e.detail.userInfo
       this.setData({
         userInfo: e.detail.userInfo,
         hasUserInfo: true
       })
-      wx.navigateTo({
-        url: '../home/home'
-      })
+      AV.User.loginWithWeapp().then(user => {
+        app.globalData.user = user.toJSON();
+        wx.navigateTo({
+          url: '../home/home'
+        })
+        wx.hideLoading()
+      }).catch(console.error);
     }
-  }
+  },
 })

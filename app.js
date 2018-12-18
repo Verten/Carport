@@ -1,18 +1,36 @@
+const AV = require('./libs/av-live-query-weapp-min');
+
+AV.init({
+  appId: '455NQFwgxVebEKXiu8feLr1t-gzGzoHsz',
+  appKey: '2oL3oEQbFuAqf2msAM01NwA2',
+});
 //app.js
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
+    wx.showLoading({
+      title: '数据加载中',
+    });
 
     // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.info(res)
-      }
-    })
+    // wx.login({
+    //   success: res => {
+    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //     console.info(res)
+    //   }
+    // })
+
+    AV.User.loginWithWeapp().then(user => {
+      this.globalData.user = user.toJSON();
+      wx.navigateTo({
+        url: '../home/home'
+      })
+      wx.hideLoading()
+    }).catch(console.error);
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -38,6 +56,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    user: null,
   }
 })

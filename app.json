@@ -1,13 +1,13 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/home/home",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Carport",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }
