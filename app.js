@@ -28,6 +28,9 @@ App({
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
+              wx.navigateTo({
+                url: '../home/home'
+              })
             }
           })
         }

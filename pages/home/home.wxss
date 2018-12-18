@@ -1,0 +1,16 @@
+.home{
+  padding-top: 100rpx;
+  padding-bottom: 20rpx;
+  text-align: center;
+}
+
+.useravatar{
+  height: 256rpx;
+  width: 256rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.blue{
+  background-color: #00AEFF;
+}

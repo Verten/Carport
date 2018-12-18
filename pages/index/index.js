@@ -13,7 +13,7 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../home/home'
     })
   },
   onLoad: function() {
@@ -56,6 +56,9 @@ Page({
       this.setData({
         userInfo: e.detail.userInfo,
         hasUserInfo: true
+      })
+      wx.navigateTo({
+        url: '../home/home'
       })
     }
   }

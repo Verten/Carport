@@ -1,0 +1,22 @@
+<view class="container home blue">
+  <view class='userinfo'>
+    <image class='useravatar' src='{{userInfo.avatarUrl}}'></image>
+    <view class='usernickname'>
+      <open-data type='userNickName'></open-data>
+    </view>
+    <view class='usergender'>
+      车牌号XXXXXX
+    </view>
+  </view>
+</view>
+
+<view class="page">
+    <view class="page__bd page__bd_spacing">
+        <view class="weui-footer weui-footer_fixed-bottom">
+            <view class="weui-footer__links">
+                <view url="" class="weui-footer__link">Carport</view>
+            </view>
+            <view class="weui-footer__text">Copyright © 2018 </view>
+        </view>
+    </view>
+</view>
