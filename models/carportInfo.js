@@ -1,12 +1,12 @@
 const AV = require('../libs/av-live-query-weapp-min')
 
-class CarportInfo extends AV.object {
-  get ownId() {
-    return this.get('ownId')
+class CarportInfo extends AV.Object {
+  get ownerId() {
+    return this.get('ownerId')
   }
 
-  set ownId(ownId) {
-    this.set('ownId', ownId)
+  set ownerId(ownerId) {
+    this.set('ownerId', ownerId)
   }
 
   get location() {
@@ -49,3 +49,6 @@ class CarportInfo extends AV.object {
     this.set('comment', comment)
   }
 }
+AV.Object.register(CarportInfo);
+
+export default CarportInfo

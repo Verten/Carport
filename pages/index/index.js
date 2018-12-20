@@ -63,11 +63,16 @@ Page({
       })
       AV.User.loginWithWeapp().then(user => {
         app.globalData.user = user.toJSON();
-        wx.navigateTo({
-          url: '../home/home'
-        })
+        // wx.navigateTo({
+        //   url: '../home/home'
+        // })
         wx.hideLoading()
       }).catch(console.error);
     }
   },
+  redirectToSetting: function() {
+    wx.navigateTo({
+      url: '../setting/setting'
+    })
+  }
 })

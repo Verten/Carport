@@ -8,7 +8,7 @@
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
-  margin: 20rpx;
+  margin: 1666rpx;
   border-radius: 50%;
 }
 
@@ -24,4 +24,41 @@
   width: 256rpx;
   height: 256rpx;
   margin: 20rpx;
+}
+
+.home{
+  padding-top: 100rpx;
+  padding-bottom: 20rpx;
+  text-align: center;
+}
+
+.useravatar{
+  height: 256rpx;
+  width: 256rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.blue{
+  background-color: #00AEFF;
+}
+
+.operation{
+  margin-top: 56rpx;
+  padding: 0 24rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.operation .item{
+  text-align: center;
+  flex: 0 1 auto;
+  /* font-size: 28rpx; */
+}
+
+.share-logo, .history-logo, .list-logo, .setting-logo{
+  width: 156rpx;
+  height: 156rpx;
 }

@@ -1,0 +1,8 @@
+/* pages/setting/setting.wxss */
+.setting .submit{
+  margin: 24rpx;
+}
+
+.submit-button{
+  width: 100%;
+}
