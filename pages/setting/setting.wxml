@@ -1,11 +1,13 @@
 <!--pages/setting/setting.wxml-->
 <view class="setting">
+  
+
   <van-cell-group>
-    <van-field value="{{ username }}" required clearable label="用户名" placeholder="请输入用户名" bind:change="onUsernameChange" />
+    <van-field value="{{ username.value }}" required clearable label="用户名" placeholder="请输入用户名" error="{{username.error}}" bind:change="onUsernameChange" />
 
-    <van-field value="{{ vechileNumber }}" label="车牌号" placeholder="请输入车牌号" required bind:change="onVechileNumberChange" />
+    <van-field value="{{ vechileNumber.value }}" label="车牌号" placeholder="请输入车牌号" error="{{vechileNumber.error}}" required bind:change="onVechileNumberChange" />
 
-    <van-field value="{{ carportLocation }}" label="车位地址" placeholder="请输入车位地址" required border="{{ false }}" bind:change="onCarportLocationChange" />
+    <van-field value="{{ carportLocation.value }}" label="车位地址" placeholder="请输入车位地址" border="{{ false }}" bind:change="onCarportLocationChange" />
   </van-cell-group>
   <view class='submit'>
     <van-button type="primary" custom-class='submit-button' bind:click="handleChangeUserinfo">确定</van-button>

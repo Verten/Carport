@@ -1,9 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/home/home",
     "pages/logs/logs",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/share/share",
+    "pages/history/history",
+    "pages/list/list"
   ],
   "window": {
     "backgroundTextStyle": "light",

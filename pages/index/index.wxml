@@ -15,20 +15,20 @@
         <open-data type='userNickName'></open-data>
       </view>
       <view class='usergender'>
-        车牌号XXXXXX
+        {{userInfo.carportInfo[0].vehicleNumber}}
       </view>
     </view>
   </view>
   <view class='operation'>
-    <view class='item'>
-      <image src='../../assets/carport.svg' class='share-logo'></image>
+    <view class='item' bindtap='redirectToShare'>
+      <image src='../../assets/share.svg' class='share-logo'></image>
       <view>共享</view>
     </view>
-    <view class='item'>
+    <view class='item' bindtap='redirectToHistory'>
       <image src='../../assets/history.svg' class='history-logo'></image>
       <view>记录</view>
     </view>
-    <view class='item'>
+    <view class='item' bindtap='redirectToList'>
       <image src='../../assets/list.svg' class='list-logo'></image>
       <view>查看</view>
     </view>

@@ -49,6 +49,6 @@ class CarportInfo extends AV.Object {
     this.set('comment', comment)
   }
 }
-AV.Object.register(CarportInfo);
+AV.Object.register(CarportInfo, 'CarportInfo');
 
 export default CarportInfo
