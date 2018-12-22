@@ -1,2 +1,29 @@
 <!--pages/list/list.wxml-->
-<text>pages/list/list.wxml</text>
+<view class='list'>
+  <view class='label'>所有共享</view>
+  <block wx:if="{{shareInfoList.length !== 0}}">
+    <block wx:for="{{shareInfoList}}" wx:key="index" wx:for-item="shareInfo">
+      <view class='info' data-shareInfoId='{{shareInfo.objectId}}' bindtap='showShareInfo'>
+        <view class='title'>
+          <view class='left'>{{shareInfo.location}}</view>
+          <view class='right'>{{shareInfo.currentVehicleNumber}}</view>
+        </view>
+        <view class='description'>
+          <text class='left'>{{shareInfo.startDate}}</text>
+          <text class='right'>{{shareInfo.endDate}}</text>
+        </view>
+      </view>
+    </block>
+  </block>
+  <block wx:else>
+    <text class='small'>没有数据</text>
+  </block>
+</view>
+
+<van-action-sheet
+  show="{{ dialogShow }}"
+  actions="{{ actions }}"
+  cancel-text="取消"
+  bind:close="onCloseDialog"
+  bind:select="onSelectShareInfo"
+/>

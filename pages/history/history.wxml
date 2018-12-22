@@ -1,2 +1,45 @@
 <!--pages/history/history.wxml-->
-<text>pages/history/history.wxml</text>
+<view class='history'>
+  <view class='label'>我的共享</view>
+  <block wx:if="{{myShareInfoList.length !== 0}}">
+    <block wx:for="{{myShareInfoList}}" wx:key="index" wx:for-item="myShareInfo">
+      <view class='info'>
+        <view class='title'>
+          <view class='left'>{{myShareInfo.location}}</view>
+          <view class='right'>{{myShareInfo.currentVehicleNumber}}</view>
+        </view>
+        <view class='description'>
+          <text class='left'>{{myShareInfo.startDate}}</text>
+          <text class='right'>{{myShareInfo.endDate}}</text>
+        </view>
+      </view>
+    </block>
+  </block>
+  <block wx:else>
+    <text class='small'>没有数据</text>
+  </block>
+
+
+
+
+  <view class='label'>我的预定</view>
+  <block wx:if="{{bookedShareInfoList.length !== 0}}">
+    <block wx:for="{{bookedShareInfoList}}" wx:key="index" wx:for-item="bookedShareInfo">
+      <view class='info'>
+        <view class='title'>
+          <view class='left'>{{bookedShareInfo.location}}</view>
+          <view class='right'>{{bookedShareInfo.currentVehicleNumber}}</view>
+        </view>
+        <view class='description'>
+          <text class='left'>{{bookedShareInfo.startDate}}</text>
+          <text class='right'>{{bookedShareInfo.endDate}}</text>
+        </view>
+      </view>
+    </block>
+  </block>
+  <block wx:else>
+    <text class='small'>没有数据</text>
+  </block>
+
+
+</view>

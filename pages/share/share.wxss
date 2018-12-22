@@ -1,1 +1,12 @@
 /* pages/share/share.wxss */
+.date-picker-wrapper{
+  background-color: #000000;
+}
+
+.share .submit{
+  margin: 24rpx;
+}
+
+.submit-button{
+  width: 100%;
+}

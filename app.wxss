@@ -10,3 +10,43 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.small{
+  font-size: 26rpx;
+  opacity: 0.7;
+}
+
+.label {
+  opacity: 0.7;
+  margin-top: 24rpx;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 150rpx;
+  margin: 40rpx 0;
+  padding: 16rpx;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.title {
+  display: flex;
+  font-size: 26rpx;
+}
+
+.description {
+  display: flex;
+  font-size: 26rpx;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  
+}

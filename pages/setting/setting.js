@@ -11,7 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    carportList: [],
+    carporstList: [],
     username: {
       value: '',
       error: '',
@@ -94,10 +94,10 @@ Page({
     let carportInfo = null
 
     // init carport information, cuerrent only allow one user with one carport
-    if (this.data.carportList.length === 0) {
+    if (this.data.carporstList.length === 0) {
       carportInfo = new CartportInfo()
     } else {
-      carportInfo = this.data.carportList[0]
+      carportInfo = this.data.carporstList[0]
     }
     carportInfo.ownerId = app.globalData.user.objectId
     carportInfo.location = this.data.carportLocation.value
@@ -145,7 +145,7 @@ Page({
   updateCarportInfo: function(carports) {
     console.info('current carports: ', carports)
     this.setData({
-      carportList: carports,
+      carporstList: carports,
       vechileNumber: {
         value: carports[0].get('vehicleNumber'),
         error: '',

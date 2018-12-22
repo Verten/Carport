@@ -1,1 +1,11 @@
 /* pages/history/history.wxss */
+
+.history {
+  padding: 10px 15px;
+}
+
+
+.history .info{
+  background: #007dc5d0;
+  box-shadow: 0rpx 0rpx 10rpx 1rpx #007dc5d0;
+}

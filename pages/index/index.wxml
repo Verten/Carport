@@ -15,7 +15,7 @@
         <open-data type='userNickName'></open-data>
       </view>
       <view class='usergender'>
-        {{userInfo.carportInfo[0].vehicleNumber}}
+        {{userInfo.carportsInfo[0].vehicleNumber}}
       </view>
     </view>
   </view>
@@ -50,3 +50,5 @@
     </view>
   </view>
 </view>
+
+<van-toast id="van-toast" />

@@ -1,7 +1,5 @@
 <!--pages/setting/setting.wxml-->
 <view class="setting">
-  
-
   <van-cell-group>
     <van-field value="{{ username.value }}" required clearable label="用户名" placeholder="请输入用户名" error="{{username.error}}" bind:change="onUsernameChange" />
 

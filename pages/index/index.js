@@ -1,4 +1,5 @@
 //index.js
+import Toast from 'vant-weapp/toast/toast'
 import CartportInfo from '../../models/carportInfo'
 import * as apiUtil from '../../utils/apiUtil'
 const util = require('../../utils/util.js')
@@ -31,14 +32,14 @@ Page({
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = (res, leanUserInfo) => {
-        if (leanUserInfo) {
-          apiUtil.fetchCurrentCarportList(leanUserInfo.objectId, this.getVechileNumber, apiUtil.errorCallback)
-        }
         this.setData({
           leanUserInfo,
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        if (leanUserInfo) {
+          apiUtil.fetchCurrentCarportList(leanUserInfo.objectId, this.getVechileNumber, apiUtil.errorCallback)
+        }
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -53,15 +54,18 @@ Page({
       })
     }
   },
+  /**
+   * get vechile number to userInfo
+   */
   getVechileNumber: function(carports) {
-    const carportInfo = carports.map(carport => {
+    const carportsInfo = carports.map(carport => {
       return {
         vehicleNumber: carport.get('vehicleNumber'),
         location: carport.get('location'),
       }
     })
     Object.assign(this.data.userInfo, {
-      carportInfo,
+      carportsInfo,
     })
     this.setData({
       userInfo: this.data.userInfo,
@@ -99,24 +103,48 @@ Page({
       }).catch(console.error);
     }
   },
-  redirectToShare: function () {
-    wx.navigateTo({
-      url: '../share/share'
-    })
+  redirectToShare: function() {
+    // user should have to set carport information first
+    if (!this.iskUserHasVehicle()) {
+      return false
+    } else {
+      wx.navigateTo({
+        url: '../share/share'
+      })
+    }
   },
-  redirectToHistory: function () {
-    wx.navigateTo({
-      url: '../history/history'
-    })
+  redirectToHistory: function() {
+    // user should have to set carport information first
+    if (!this.iskUserHasVehicle()) {
+      return false
+    } else {
+      wx.navigateTo({
+        url: '../history/history'
+      })
+    }
   },
-  redirectToList: function () {
-    wx.navigateTo({
-      url: '../list/list'
-    })
+  redirectToList: function() {
+    if (!this.iskUserHasVehicle()) {
+      return false
+    } else {
+      wx.navigateTo({
+        url: '../list/list'
+      })
+    }
   },
-  redirectToSetting: function () {
+  redirectToSetting: function() {
     wx.navigateTo({
       url: '../setting/setting'
     })
+  },
+  iskUserHasVehicle: function() {
+    if (!this.data.userInfo.carportsInfo || this.data.userInfo.carportsInfo.length === 0) {
+      Toast.fail({
+        message: '请先设置信息',
+        duration: 1500,
+      })
+      return false
+    }
+    return true
   },
 })

@@ -1,2 +1,19 @@
 <!--pages/share/share.wxml-->
-<text>pages/share/share.wxml</text>
+<view class="share">
+  <block wx:for="{{carportsInfo}}" wx:key="index" wx:for-item="carportInfo">
+    <van-cell-group>
+      <van-field value="{{ carportInfo.location }}" required disabled label="车位" />
+      <van-field value="{{ carportInfo.startDate }}" data-name="startDate" id="{{carportInfo.carportId}}" required readonly icon="setting" placeholder="请选择开始时间" label="开始时间" bind:click-icon="showDatePicker" />
+      <van-field value="{{ carportInfo.endDate }}" data-name="endDate" id="{{carportInfo.carportId}}" required readonly icon="setting" placeholder="请选择结束时间" label="结束时间" bind:click-icon="showDatePicker" />
+    </van-cell-group>
+  </block>
+  <view class="submit">
+    <van-button type="primary" custom-class='submit-button' bind:click="handleSubmitShareinfo">确定</van-button>
+  </view>
+</view>
+
+<van-transition show="{{ datePickerShow }}" custom-class="block" name="slide-up">
+  <view class='date-picker-wrapper'>
+    <van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}" bind:cancel="onDateCancel" bind:confirm="onDateConfirm" />
+  </view>
+</van-transition>
