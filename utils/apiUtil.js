@@ -3,6 +3,12 @@ import ShareInfo from '../models/shareInfo'
 import AV from '../libs/av-live-query-weapp-min'
 import util from './util'
 
+export const fetchUserByUserId = (userId, successCb, failedCb) => {
+  const query = new AV.Query('_User')
+
+  return query.get(userId).then(successCb).catch(failedCb)
+}
+
 export const fetchCurrentCarportList = (ownerId, successCb, failedCb) => {
   // query carport first
   const query = new AV.Query(CartportInfo)

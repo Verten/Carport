@@ -5,6 +5,6 @@
 
 
 .list .info{
-  background: #00a884d0;
-  box-shadow: 0rpx 0rpx 10rpx 1rpx #00a884d0;
+  background: #00a884;
+  box-shadow: 0rpx 0rpx 10rpx 1rpx #00a884;
 }

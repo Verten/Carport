@@ -18,7 +18,7 @@ Page({
     lastShareInfoCreateDate: null,
     actions: [{
       name: '预定'
-    }, ]
+    }]
   },
 
   getCarportsInfo: function(carports) {
@@ -42,8 +42,8 @@ Page({
       return {
         ...shareInfo,
         currentVehicleNumber: shareInfo.currentVehicleNumber.replace(/[A-Z]\d{2}/, '***'),
-        startDate: new Date(shareInfo.startDate).nv_toLocaleDateString(),
-        endDate: new Date(shareInfo.endDate).nv_toLocaleDateString(),
+        startDate: util.getDateHourTimeOrString(new Date(shareInfo.startDate), 'string'),
+        endDate: util.getDateHourTimeOrString(new Date(shareInfo.endDate), 'string'),
       }
     })
     if (shareInfoList.length !== 0) {
@@ -57,10 +57,32 @@ Page({
 
   showShareInfo: function(e) {
     const selectedShareInfoId = e.target.dataset.shareinfoid
-    this.setData({
-      selectedShareInfoId,
-      dialogShow: true,
-    })
+    if (selectedShareInfoId) {
+      // check shareInfo has been booked yes or not
+      this.data.shareInfoList.forEach(shareInfo => {
+        if (shareInfo.objectId === selectedShareInfoId) {
+          if (shareInfo.currentVehicleNumber) {
+            this.setData({
+              actions: [{
+                name: '已经被预定',
+                disabled: true,
+              }]
+            })
+          } else {
+            this.setData({
+              actions: [{
+                name: '预定'
+              }]
+            })
+          }
+        }
+      })
+
+      this.setData({
+        selectedShareInfoId,
+        dialogShow: true,
+      })
+    }
   },
 
   onSelectShareInfo: function() {

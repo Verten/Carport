@@ -2,6 +2,7 @@
 import CartportInfo from '../../models/carportInfo'
 import AV from '../../libs/av-live-query-weapp-min'
 import * as apiUtil from '../../utils/apiUtil'
+import util from '../../utils/util'
 
 const app = getApp()
 
@@ -13,6 +14,10 @@ Page({
   data: {
     carporstList: [],
     username: {
+      value: '',
+      error: '',
+    },
+    phoneNumber: {
       value: '',
       error: '',
     },
@@ -37,6 +42,15 @@ Page({
       username: this.data.username,
     })
   },
+  onPhoneNumberChange: function(event){
+    Object.assign(this.data.phoneNumber, {
+      value: event.detail,
+      error: ''
+    })
+    this.setData({
+      phoneNumber: this.data.phoneNumber,
+    })
+  },
   onVechileNumberChange: function(event) {
     Object.assign(this.data.vechileNumber, {
       value: event.detail,
@@ -55,9 +69,11 @@ Page({
       carportLocation: this.data.carportLocation,
     })
   },
+
+
   handleChangeUserinfo: function() {
     // validate user input
-    if (!this.isValidateVechileNumber(this.data.vechileNumber.value)) {
+    if (!util.isValidateVechileNumber(this.data.vechileNumber.value)) {
       Object.assign(this.data.vechileNumber, {
         error: true
       })
@@ -72,7 +88,7 @@ Page({
       return false
     }
 
-    if (!this.isValidateUserName(this.data.username.value)) {
+    if (!util.isEmptyString(this.data.username.value)) {
       Object.assign(this.data.username, {
         error: true
       })
@@ -83,6 +99,21 @@ Page({
       })
       this.setData({
         username: this.data.username,
+      })
+      return false
+    }
+
+    if (!util.isValidatePhoneNumber(this.data.phoneNumber.value)) {
+      Object.assign(this.data.phoneNumber, {
+        error: true
+      })
+      wx.showToast({
+        icon: 'none',
+        title: '请检查手机号码',
+        mask: true,
+      })
+      this.setData({
+        phoneNumber: this.data.phoneNumber,
       })
       return false
     }
@@ -109,8 +140,13 @@ Page({
     // set username
     currentUser.setUsername(this.data.username.value)
 
+    // set phone number
+    currentUser.set('phoneNumber', this.data.phoneNumber.value)
+
     currentUser.save().then(function(user) {
-      console.info('save user success -> ', user)
+      const userInfo = user.toJSON()
+      console.info('save user success -> ', userInfo)
+      app.globalData.user.phoneNumber = userInfo.phoneNumber
       // save carport after save user success
       return carportInfo.save()
     }).then(function(carport) {
@@ -127,19 +163,6 @@ Page({
       console.info('save object error -> ', error)
       wx.hideLoading()
     })
-  },
-
-  isValidateUserName: function(username) {
-    return username !== ''
-  },
-
-  isValidateVechileNumber: function(vehicleNumber) {
-    var result = false;
-    if (vehicleNumber.length == 7) {
-      var express = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/;
-      result = express.test(vehicleNumber);
-    }
-    return result;
   },
 
   updateCarportInfo: function(carports) {
@@ -161,12 +184,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.info('setting page load', app.globalData.user)
     if (app.globalData.userInfo) {
       this.setData({
         username: {
           value: app.globalData.userInfo.nickName,
           error: '',
         },
+        phoneNumber: {
+          value: app.globalData.user.phoneNumber,
+          error: '',
+        }
       })
     }
     apiUtil.fetchCurrentCarportList(app.globalData.user.objectId, this.updateCarportInfo, apiUtil.errorCallback)

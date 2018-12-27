@@ -3,7 +3,7 @@
   <view class='label'>我的共享</view>
   <block wx:if="{{myShareInfoList.length !== 0}}">
     <block wx:for="{{myShareInfoList}}" wx:key="index" wx:for-item="myShareInfo">
-      <view class='info'>
+      <view class='info' data-shareInfoId='{{myShareInfo.objectId}}' bindtap='showBookedUserInfo'>
         <view class='title'>
           <view class='left'>{{myShareInfo.location}}</view>
           <view class='right'>{{myShareInfo.currentVehicleNumber}}</view>
@@ -25,7 +25,7 @@
   <view class='label'>我的预定</view>
   <block wx:if="{{bookedShareInfoList.length !== 0}}">
     <block wx:for="{{bookedShareInfoList}}" wx:key="index" wx:for-item="bookedShareInfo">
-      <view class='info'>
+      <view class='info' data-shareInfoId='{{bookedShareInfo.objectId}}' bindtap='showOwnerUserInfo'>
         <view class='title'>
           <view class='left'>{{bookedShareInfo.location}}</view>
           <view class='right'>{{bookedShareInfo.currentVehicleNumber}}</view>
@@ -43,3 +43,5 @@
 
 
 </view>
+
+<van-dialog id="van-dialog" />

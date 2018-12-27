@@ -14,6 +14,6 @@
 
 <van-transition show="{{ datePickerShow }}" custom-class="block" name="slide-up">
   <view class='date-picker-wrapper'>
-    <van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}" bind:cancel="onDateCancel" bind:confirm="onDateConfirm" />
+    <van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" bind:cancel="onDateCancel" bind:confirm="onDateConfirm" />
   </view>
 </van-transition>

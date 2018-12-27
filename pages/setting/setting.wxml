@@ -3,6 +3,8 @@
   <van-cell-group>
     <van-field value="{{ username.value }}" required clearable label="用户名" placeholder="请输入用户名" error="{{username.error}}" bind:change="onUsernameChange" />
 
+    <van-field value="{{ phoneNumber.value }}" required clearable label="电话号码" placeholder="请输入手机号码" error="{{phoneNumber.error}}" bind:change="onPhoneNumberChange" />
+
     <van-field value="{{ vechileNumber.value }}" label="车牌号" placeholder="请输入车牌号" error="{{vechileNumber.error}}" required bind:change="onVechileNumberChange" />
 
     <van-field value="{{ carportLocation.value }}" label="车位地址" placeholder="请输入车位地址" border="{{ false }}" bind:change="onCarportLocationChange" />

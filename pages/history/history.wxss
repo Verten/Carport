@@ -6,6 +6,6 @@
 
 
 .history .info{
-  background: #007dc5d0;
-  box-shadow: 0rpx 0rpx 10rpx 1rpx #007dc5d0;
+  background: #007dc5;
+  box-shadow: 0rpx 0rpx 10rpx 1rpx #007dc5;
 }

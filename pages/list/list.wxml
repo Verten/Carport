@@ -25,5 +25,6 @@
   actions="{{ actions }}"
   cancel-text="取消"
   bind:close="onCloseDialog"
+  bind:cancel="onCloseDialog"
   bind:select="onSelectShareInfo"
 />
